@@ -49,6 +49,47 @@ function registerPoliceman(req,res) {
     }
 }
 
+function registerCitizen(req,res) {
+    var params = req.body; 
+    console.log(params);
+    if(params.email && params.name && params.password && params.ci && params.phone){ 
+
+                    bcrypt.hash( params.password, null ,null, (error,hash) =>{
+                        if(error) return res.status(404).send({message: 'hash error'});
+                            params.password = hash;
+                            var sql = `INSERT INTO users 
+                                        VALUES(
+                                        null,
+                                        '${params.email}',
+                                        '${params.name}',
+                                        '${params.password}',
+                                        'citizen'
+                            )`;
+                            connection.query(sql, (error, result) => {
+                                if(error) return res.status(404).send({message: 'error:'+error.sqlMessage});
+                                sql = `INSERT INTO citizens 
+                                VALUES(
+                                null,
+                                '${params.ci}',
+                                null,
+                                null,
+                                '${params.phone}',
+                                null,
+                                '${result.insertId}'
+                                )`;
+                                    connection.query(sql, (error, result) => {
+                                    if(error) return res.status(404).send({message: 'error:'+error.sqlMessage});
+                                    res.status(200).send( {citizenId: result.insertId} );
+                                    });
+                            });
+                    });
+          
+     
+    }else{
+        res.status(404).send({message: 'envia todos los parametros necesarios'});
+    }
+}
+
 function login(req,res){
     var params = req.body;
     if(params.email && params.password){ 
@@ -64,7 +105,7 @@ function login(req,res){
                             }else{
                                 //devolver datos del usuario
                                 result[0].password = undefined; // eliminar el password para no devolverlo
-                                return res.status(200).send({ result: result[0] });
+                                return res.status(200).send({ result: result[0]});
                             }
                         }else{
                             return res.status(404).send({ message: 'el usuario no se ha podido identificar' });
@@ -148,11 +189,12 @@ function deletePoliceman(req,res){
 
 
 
+
 module.exports = {
     registerPoliceman,
+    registerCitizen,
     login,
     getPolicemen,
-    
     editPoliceman,
     deletePoliceman
 }
