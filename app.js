@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 // rutas
-app.use('/api', user_routes);
-app.use('/api', alert_routes);
+app.use(user_routes);
+app.use(alert_routes);
 
 module.exports = app;

@@ -10,4 +10,7 @@ api.get('/get-alerts' ,AlertController.getAlerts);
 
 
 
+
+
+
 module.exports = api;
