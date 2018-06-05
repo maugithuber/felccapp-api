@@ -58,6 +58,7 @@ server.listen(process.env.PORT || 3800, function () {
           //enviar notificacion
             data.id=result.insertId;
             io.emit(`Alert`,data);
+            
             console.log('alerta enviada');
         });
       });
