@@ -48,7 +48,7 @@ server.listen(process.env.PORT || 3800, function () {
         connection.query(sql, (error, result) => {
           if(error) return console.log('errorSQL:'+error.sqlMessage);
           //guardar la foto
-          base64Img.img('data:image/png;base64,'+data.photo, './uploads/alerts/', 'img_'+result.insertId, function(err, filepath) {
+          base64Img.img('data:image/png;base64,'+data.photo, './uploads/alerts/', 'image_'+result.insertId, function(err, filepath) {
             if(err){
               console.log('err');
             }else{

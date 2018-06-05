@@ -62,10 +62,10 @@ function registerAlert(req,res){
 
 
 function getAlerts(req,res){
-        var sql= `SELECT * FROM alerts`;
+        var sql= `SELECT * FROM alerts order by id desc`;
         connection.query(sql, (error, result) =>{
         if(error) return res.status(404).send({message: 'error:'+error.sqlMessage});
-        return res.status(200).send({ alerts:result});
+        return res.status(200).send(result);
         });
 }
 
