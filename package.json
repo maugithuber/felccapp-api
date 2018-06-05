@@ -13,6 +13,8 @@
     "node": "9.4.0"
   },
   "dependencies": {
+    "base-64": "^0.1.0",
+    "base64-img": "^1.0.4",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "connect-multiparty": "^2.1.0",

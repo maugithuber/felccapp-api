@@ -1,6 +1,8 @@
 'use strict'
 
 var connection = require('../services/database');
+var fs = require('fs');
+var path = require('path');
 
 function registerAlert(req,res){
     var params = req.body; 
@@ -67,7 +69,28 @@ function getAlerts(req,res){
         });
 }
 
+
+
+
+function getImageAlert(req,res){
+    var alertId = req.params.alertId;
+    console.log('path_file:  '+alertId);
+    // res.status(200).send( {message:alertId});   
+    var path_file = './uploads/alerts/img_'+alertId+'.png';
+    console.log(path_file);
+    fs.exists( path_file, (exists) =>{
+        if(exists){
+            res.sendFile( path.resolve( path_file ));
+        }else{
+            res.status(404).send( {message:'no existe el id de alerta...'});   
+        }
+    });
+}
+
+
+
 module.exports = {
     getAlerts,
-    registerAlert
+    registerAlert,
+    getImageAlert
 }
