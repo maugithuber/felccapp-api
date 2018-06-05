@@ -71,7 +71,7 @@ server.listen(process.env.PORT || 3800, function () {
 
     socket.on('registerCrime',function(data){
       console.log(data);
-        sql = `
+        var sql = `
         INSERT INTO crimes 
         VALUES(null,
           '${data.date}',
