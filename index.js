@@ -71,6 +71,34 @@ server.listen(process.env.PORT || 3800, function () {
 
     socket.on('registerCrime',function(data){
       console.log(data);
+        sql = `
+        INSERT INTO crimes 
+        VALUES(null,
+          '${data.date}',
+          '${data.time}',
+          '${data.place}',
+          '${data.description}',
+          '${data.d_name}',
+          '${data.d_birthdate}',
+          '${data.d_occupation}',
+          '${data.d_home}',
+          '${data.d_civilstatus}',
+           null,
+           null,
+           null,
+           null,
+           null,
+           null,
+           null,
+           null,
+           null,
+           null
+        )`;
+        connection.query(sql, (error, result) => {
+          if(error) return console.log('errorSQL:'+error.sqlMessage);
+          console.log('hecho delicitvo registrado');
+        });
+      
     });
 
 
