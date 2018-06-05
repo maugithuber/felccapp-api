@@ -40,7 +40,6 @@ server.listen(process.env.PORT || 3800, function () {
           '${data.lng}',
           '${data.lat}',
           '${data.description}',
-           null,
           'pendiente',
           '${id_citizen}',
           '${data.category}'
