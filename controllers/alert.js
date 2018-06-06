@@ -66,7 +66,7 @@ function getAlerts(req,res){
         connection.query(sql, (error, result) =>{
         if(error) return res.status(404).send({message: 'error:'+error.sqlMessage});
         console.log(result[0]);
-        return res.status(200).send({alerts:result});
+        return res.status(200).send({ alerts:result});
         });
 }
 
