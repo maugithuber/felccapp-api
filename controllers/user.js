@@ -199,7 +199,24 @@ function deletePoliceman(req,res){
     }
 }
 
-
+function getIdDistrics(req, res){
+    var sql = 'SELECT * FROM policemen WHERE policemen.id_user='+req.params.id;
+    connection.query(sql,function(error, result){
+        if(error){
+            console.log(error);
+            res.status(200).send({mensaje:'error de servidor'});
+        }
+        else{
+            if(result.length > 0){
+                var distrito_id = result[0].id_district;
+                res.status(200).send({id : distrito_id});
+            }
+            else{
+                res.status(200).send({id : -1});
+            }
+        }
+    });
+}
 
 
 module.exports = {
@@ -209,5 +226,6 @@ module.exports = {
     getPolicemen,
     editPoliceman,
     deletePoliceman,
-    getDistrics
+    getDistrics,
+    getIdDistrics
 }

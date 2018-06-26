@@ -21,5 +21,6 @@ api.get('/get-policemen/:id_user' ,UserController.getPolicemen);
 api.put('/edit-policeman/:id_policeman' ,UserController.editPoliceman);
 api.delete('/delete-policeman/:id_policeman' ,UserController.deletePoliceman);
 api.get('/getDistrics',UserController.getDistrics);
+api.get('/getIdDistrics/:id',UserController.getIdDistrics);
 module.exports = api;
 
