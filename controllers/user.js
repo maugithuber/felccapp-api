@@ -221,7 +221,7 @@ function getIdDistrics(req, res){
         else{
             if(result.length > 0){
                 var distrito_id = result[0].id_district;
-                res.status(200).send({id : distrito_id});
+                res.status(200).send({id : distrito_id, nombre : result[0].name});
             }
             else{
                 res.status(200).send({id : -1});
