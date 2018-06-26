@@ -7,7 +7,7 @@ var app = express();
 
 var user_routes = require('./routes/user');
 var alert_routes = require('./routes/alert');
-
+var crime_routes = require('./routes/crime');
 
 //cors
 app.use((req, res, next) => {
@@ -25,5 +25,6 @@ app.use(bodyParser.json());
 // rutas
 app.use(user_routes);
 app.use(alert_routes);
+app.use(crime_routes);
 
 module.exports = app;

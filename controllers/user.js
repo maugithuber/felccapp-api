@@ -120,6 +120,18 @@ function login(req,res){
     }
 }
 
+function getDistrics(req, res){
+    var sql = 'select * from districts';
+    connection.query(sql, function(error,result){
+        if(error){
+            console.log(error);
+            res.status(500).send({mensaje : 'error servidor'});
+        }else{
+            res.status(200).send(result);
+        }
+    });
+}
+
 function getPolicemen(req,res){
     var params = req.body; 
     var id_user = req.params.id_user;
@@ -196,5 +208,6 @@ module.exports = {
     login,
     getPolicemen,
     editPoliceman,
-    deletePoliceman
+    deletePoliceman,
+    getDistrics
 }
