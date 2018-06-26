@@ -132,6 +132,18 @@ function getDistrics(req, res){
     });
 }
 
+function getDistrictsweb(req, res){
+    var sql = 'select * from districts';
+    connection.query(sql, function(error,result){
+        if(error){
+            console.log(error);
+            res.status(500).send({mensaje : 'error servidor'});
+        }else{
+            return res.status(200).send({ districts:result});
+        }
+    });
+}
+
 function getPolicemen(req,res){
     var params = req.body; 
     var id_user = req.params.id_user;
@@ -227,5 +239,6 @@ module.exports = {
     editPoliceman,
     deletePoliceman,
     getDistrics,
-    getIdDistrics
+    getIdDistrics,
+    getDistrictsweb
 }
