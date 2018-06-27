@@ -23,7 +23,7 @@ server.listen(process.env.PORT || 3800, function () {
       // console.log(data.category);
       // console.log(data.lat);
       // console.log(data.lng);
-      // console.log(data.description);
+      console.log(data.photo);
       var sql= `
       SELECT citizens.id 
       FROM citizens,users 
