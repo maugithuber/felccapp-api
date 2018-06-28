@@ -81,7 +81,7 @@ function getRobo(req,res){
     });
 }
 function getViolacion(req,res){
-    var sql= `SELECT * FROM alerts order  WHERE category = 'violacion' by id desc`;
+    var sql= `SELECT * FROM alerts  WHERE category = 'violacion' order by id desc`;
     connection.query(sql, (error, result) =>{
     if(error) return res.status(404).send({message: 'error:'+error.sqlMessage});
     console.log(result[0]);
