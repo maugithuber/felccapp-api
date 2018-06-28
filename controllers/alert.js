@@ -72,6 +72,37 @@ function getAlerts(req,res){
 
 
 
+function getRobo(req,res){
+    var sql= `SELECT * FROM alerts  WHERE category = 'robo' order by id desc`;
+    connection.query(sql, (error, result) =>{
+    if(error) return res.status(404).send({message: 'error:'+error.sqlMessage});
+    console.log(result[0]);
+    return res.status(200).send({ alerts:result});
+    });
+}
+function getViolacion(req,res){
+    var sql= `SELECT * FROM alerts order  WHERE category = 'violacion' by id desc`;
+    connection.query(sql, (error, result) =>{
+    if(error) return res.status(404).send({message: 'error:'+error.sqlMessage});
+    console.log(result[0]);
+    return res.status(200).send({ alerts:result});
+    });
+}
+function getViolencia(req,res){
+    var sql= `SELECT * FROM alerts WHERE category = 'violencia' order by id desc`;
+    connection.query(sql, (error, result) =>{
+    if(error) return res.status(404).send({message: 'error:'+error.sqlMessage});
+    console.log(result[0]);
+    return res.status(200).send({ alerts:result});
+    });
+}
+
+
+
+
+
+
+
 
 function getImageAlert(req,res){
     var alertId = req.params.alertId;
@@ -140,5 +171,9 @@ function cancelAlert(req,res){
 module.exports = {
     getAlerts,
     registerAlert,
-    getImageAlert
+    getImageAlert,
+    getRobo,
+    getViolacion,
+    getViolencia
+
 }
