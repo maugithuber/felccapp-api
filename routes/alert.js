@@ -12,7 +12,7 @@ api.get('/get-image-alert/:alertId', AlertController.getImageAlert);
 api.get('/get-robo' ,AlertController.getRobo);
 api.get('/get-violacion' ,AlertController.getViolacion);
 api.get('/get-violencia' ,AlertController.getViolencia);
-
+api.get('/get-stats' ,AlertController.getStats);
 
 
 

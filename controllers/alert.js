@@ -98,6 +98,17 @@ function getViolencia(req,res){
 }
 
 
+function getStats(req,res){
+    var sql= `SELECT category as categoria ,count(*) as cantidad
+    FROM alerts
+    GROUP BY category`;
+    connection.query(sql, (error, result) =>{
+    if(error) return res.status(404).send({message: 'error:'+error.sqlMessage});
+    console.log(result[0]);
+    return res.status(200).send({ alerts:result});
+    });
+}
+
 
 
 
@@ -174,6 +185,7 @@ module.exports = {
     getImageAlert,
     getRobo,
     getViolacion,
-    getViolencia
+    getViolencia,
+    getStats
 
 }
