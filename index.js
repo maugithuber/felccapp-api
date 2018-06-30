@@ -15,7 +15,10 @@ server.listen(process.env.PORT || 3800, function () {
     console.log("alguien se conecto");
 
 
-
+    socket.on('atender',function(data){
+        data = {};
+        io.emit(`user`,data);
+    })
 
 
 
