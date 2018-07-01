@@ -83,21 +83,24 @@ server.listen(process.env.PORT || 3800, function () {
           '${data.time}',
           '${data.place}',
           '${data.description}',
+
           '${data.d_name}',
           '${data.d_birthdate}',
           '${data.d_occupation}',
           '${data.d_home}',
           '${data.d_civilstatus}',
-           null,
-           null,
-           null,
-           null,
-           null,
-           null,
-           null,
-           null,
-           null,
-           null
+ 
+          '${data.v_name}',
+          '${data.v_birthdate}',
+          '${data.v_occupation}',
+          '${data.v_home}',
+          '${data.v_civilstatus}',
+
+          '${data.a_name}',
+          '${data.a_birthdate}',
+          '${data.a_occupation}',
+          '${data.a_home}',
+          '${data.a_civilstatus}'
         )`;
         connection.query(sql, (error, result) => {
           if(error) return console.log('errorSQL:'+error.sqlMessage);
